@@ -4,7 +4,7 @@ var ObjectId = require("mongodb").ObjectId;
 const app= express();
 app.use(express.json());
 
-app.get("/",async(req, res) => {
+app.get("/api/v3/app/events",async(req, res) => {
     let data = await dbConnect();
     if (req.query.id) {
         async function run() {
@@ -34,7 +34,7 @@ app.get("/",async(req, res) => {
     }
   });
 
-app.post("/", async(req,res) => {
+app.post("/api/v3/app/events", async(req,res) => {
     let data = await dbConnect();
     console.log(req.body);
     async function run() {
@@ -45,7 +45,7 @@ app.post("/", async(req,res) => {
     run().catch(console.dir);
 });
 
-app.put("/:id", async(req,res) => {
+app.put("/api/v3/app/events/:id", async(req,res) => {
     let data = await dbConnect();
     console.log(req.params.id)
     async function run() {
@@ -59,7 +59,7 @@ app.put("/:id", async(req,res) => {
     run().catch(console.dir);
   });
 
-app.delete("/:id", async(req,res) => {
+app.delete("/api/v3/app/events/:id", async(req,res) => {
     let data = await dbConnect();
     console.log(req.params.id);
     async function run() {
